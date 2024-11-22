@@ -67,7 +67,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(386, 9);
+            label5.Location = new Point(403, 9);
             label5.Name = "label5";
             label5.Size = new Size(198, 35);
             label5.TabIndex = 12;
@@ -139,6 +139,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightBlue;
             ClientSize = new Size(932, 553);
             Controls.Add(signupBtn);
             Controls.Add(label6);

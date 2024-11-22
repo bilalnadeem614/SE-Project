@@ -59,5 +59,55 @@ namespace SE_Project.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1904654_cancel_close_cross_delete_reject_icon {
+            get {
+                object obj = ResourceManager.GetObject("1904654_cancel_close_cross_delete_reject_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _5727896_fare_occupant_passenger_sitter_transport_icon {
+            get {
+                object obj = ResourceManager.GetObject("5727896_fare_occupant_passenger_sitter_transport_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _8674989_ic_fluent_history_regular_icon {
+            get {
+                object obj = ResourceManager.GetObject("8674989_ic_fluent_history_regular_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9024905_train_light_icon {
+            get {
+                object obj = ResourceManager.GetObject("9024905_train_light_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap booking {
+            get {
+                object obj = ResourceManager.GetObject("booking", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
