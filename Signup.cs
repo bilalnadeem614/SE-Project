@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace SE_Project
 {
     public partial class Signup : Form
@@ -15,6 +16,16 @@ namespace SE_Project
         public Signup()
         {
             InitializeComponent();
+        }
+
+        private void Signup_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
