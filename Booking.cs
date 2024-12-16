@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace SE_Project
 {
-    public partial class schedule : Form
+    public partial class Booking : Form
     {
-        public schedule()
+        public Booking()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Booking_Load(object sender, EventArgs e)
         {
 
         }
