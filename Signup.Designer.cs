@@ -153,6 +153,7 @@
             signupBtn.TabIndex = 11;
             signupBtn.Text = "Register";
             signupBtn.UseVisualStyleBackColor = true;
+            signupBtn.Click += signupBtn_Click;
             // 
             // label6
             // 
@@ -172,6 +173,7 @@
             loginBtn.TabIndex = 13;
             loginBtn.Text = "Login";
             loginBtn.UseVisualStyleBackColor = true;
+            loginBtn.Click += loginBtn_Click;
             // 
             // Signup
             // 
