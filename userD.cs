@@ -26,5 +26,33 @@ namespace SE_Project
         {
 
         }
+
+        private void scheduleBtn_Click(object sender, EventArgs e)
+        {
+            schedule schedule = new schedule();
+            this.Hide();
+            schedule.Show();
+        }
+
+        private void bookingBtn_Click(object sender, EventArgs e)
+        {
+            Booking booking = new Booking();
+            this.Hide();
+            booking.Show();
+        }
+
+        private void historyBtn_Click(object sender, EventArgs e)
+        {
+            history history = new history();
+            this.Hide();
+            history.Show();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            cancleB cancleB = new cancleB();
+            this.Hide();
+            cancleB.Show();
+        }
     }
 }

@@ -31,18 +31,19 @@
             sloc_LB = new Label();
             dec_LB = new Label();
             label1 = new Label();
-            submit_BTN = new Button();
-            dataGridView1 = new DataGridView();
+            show_BTN = new Button();
+            trainSchView = new DataGridView();
             book_BTN = new Button();
-            start_CB = new ComboBox();
-            des_CB = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            startLoc = new ComboBox();
+            endLoc = new ComboBox();
+            backBTN = new Button();
+            ((System.ComponentModel.ISupportInitialize)trainSchView).BeginInit();
             SuspendLayout();
             // 
             // sloc_LB
             // 
             sloc_LB.AutoSize = true;
-            sloc_LB.Location = new Point(75, 88);
+            sloc_LB.Location = new Point(138, 150);
             sloc_LB.Name = "sloc_LB";
             sloc_LB.Size = new Size(40, 20);
             sloc_LB.TabIndex = 0;
@@ -51,7 +52,7 @@
             // dec_LB
             // 
             dec_LB.AutoSize = true;
-            dec_LB.Location = new Point(75, 146);
+            dec_LB.Location = new Point(138, 208);
             dec_LB.Name = "dec_LB";
             dec_LB.Size = new Size(85, 20);
             dec_LB.TabIndex = 1;
@@ -60,55 +61,69 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(43, 21);
+            label1.Location = new Point(106, 83);
             label1.Name = "label1";
             label1.Size = new Size(143, 20);
             label1.TabIndex = 2;
             label1.Text = "Select Your Location";
             label1.Click += label1_Click;
             // 
-            // submit_BTN
+            // show_BTN
             // 
-            submit_BTN.Location = new Point(134, 242);
-            submit_BTN.Name = "submit_BTN";
-            submit_BTN.Size = new Size(94, 29);
-            submit_BTN.TabIndex = 5;
-            submit_BTN.Text = "Show";
-            submit_BTN.UseVisualStyleBackColor = true;
+            show_BTN.Location = new Point(197, 304);
+            show_BTN.Name = "show_BTN";
+            show_BTN.Size = new Size(94, 29);
+            show_BTN.TabIndex = 5;
+            show_BTN.Text = "Show";
+            show_BTN.UseVisualStyleBackColor = true;
+            show_BTN.Click += show_BTN_Click;
             // 
-            // dataGridView1
+            // trainSchView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(470, 34);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(410, 363);
-            dataGridView1.TabIndex = 6;
+            trainSchView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            trainSchView.Location = new Point(470, 34);
+            trainSchView.Name = "trainSchView";
+            trainSchView.RowHeadersWidth = 51;
+            trainSchView.Size = new Size(410, 363);
+            trainSchView.TabIndex = 6;
             // 
             // book_BTN
             // 
-            book_BTN.Location = new Point(262, 242);
+            book_BTN.Location = new Point(325, 304);
             book_BTN.Name = "book_BTN";
             book_BTN.Size = new Size(94, 29);
             book_BTN.TabIndex = 7;
             book_BTN.Text = "Book Ticket";
             book_BTN.UseVisualStyleBackColor = true;
+            book_BTN.Click += book_BTN_Click;
             // 
-            // start_CB
+            // startLoc
             // 
-            start_CB.FormattingEnabled = true;
-            start_CB.Location = new Point(205, 88);
-            start_CB.Name = "start_CB";
-            start_CB.Size = new Size(151, 28);
-            start_CB.TabIndex = 8;
+            startLoc.FormattingEnabled = true;
+            startLoc.Items.AddRange(new object[] { "Lahore", "Islamabad", "Karachi" });
+            startLoc.Location = new Point(268, 150);
+            startLoc.Name = "startLoc";
+            startLoc.Size = new Size(151, 28);
+            startLoc.TabIndex = 8;
             // 
-            // des_CB
+            // endLoc
             // 
-            des_CB.FormattingEnabled = true;
-            des_CB.Location = new Point(205, 138);
-            des_CB.Name = "des_CB";
-            des_CB.Size = new Size(151, 28);
-            des_CB.TabIndex = 9;
+            endLoc.FormattingEnabled = true;
+            endLoc.Items.AddRange(new object[] { "Lahore", "Islamabad", "Karachi" });
+            endLoc.Location = new Point(268, 200);
+            endLoc.Name = "endLoc";
+            endLoc.Size = new Size(151, 28);
+            endLoc.TabIndex = 9;
+            // 
+            // backBTN
+            // 
+            backBTN.Location = new Point(12, 12);
+            backBTN.Name = "backBTN";
+            backBTN.Size = new Size(94, 29);
+            backBTN.TabIndex = 10;
+            backBTN.Text = "Main Menu";
+            backBTN.UseVisualStyleBackColor = true;
+            backBTN.Click += backBTN_Click;
             // 
             // schedule
             // 
@@ -116,17 +131,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(957, 440);
-            Controls.Add(des_CB);
-            Controls.Add(start_CB);
+            Controls.Add(backBTN);
+            Controls.Add(endLoc);
+            Controls.Add(startLoc);
             Controls.Add(book_BTN);
-            Controls.Add(dataGridView1);
-            Controls.Add(submit_BTN);
+            Controls.Add(trainSchView);
+            Controls.Add(show_BTN);
             Controls.Add(label1);
             Controls.Add(dec_LB);
             Controls.Add(sloc_LB);
             Name = "schedule";
             Text = "schedule";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trainSchView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,10 +152,11 @@
         private Label sloc_LB;
         private Label dec_LB;
         private Label label1;
-        private Button submit_BTN;
-        private DataGridView dataGridView1;
+        private Button show_BTN;
+        private DataGridView trainSchView;
         private Button book_BTN;
-        private ComboBox start_CB;
-        private ComboBox des_CB;
+        private ComboBox startLoc;
+        private ComboBox endLoc;
+        private Button backBTN;
     }
 }

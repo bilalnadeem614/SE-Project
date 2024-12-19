@@ -81,6 +81,7 @@
             cancelBtn.TabIndex = 8;
             cancelBtn.Text = "Cancel Ticket";
             cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
             // 
             // historyBtn
             // 
@@ -90,6 +91,7 @@
             historyBtn.TabIndex = 7;
             historyBtn.Text = "See History";
             historyBtn.UseVisualStyleBackColor = true;
+            historyBtn.Click += historyBtn_Click;
             // 
             // bookingBtn
             // 
@@ -99,6 +101,7 @@
             bookingBtn.TabIndex = 6;
             bookingBtn.Text = "Booking";
             bookingBtn.UseVisualStyleBackColor = true;
+            bookingBtn.Click += bookingBtn_Click;
             // 
             // scheduleBtn
             // 
@@ -108,6 +111,7 @@
             scheduleBtn.TabIndex = 5;
             scheduleBtn.Text = "See Schedule";
             scheduleBtn.UseVisualStyleBackColor = true;
+            scheduleBtn.Click += scheduleBtn_Click;
             // 
             // pictureBox5
             // 

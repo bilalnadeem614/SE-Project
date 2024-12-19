@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
+//using WcfService2;
+using ServiceReference1;
 
 namespace SE_Project
 {
@@ -17,6 +20,14 @@ namespace SE_Project
         {
             InitializeComponent();
         }
+
+        public static class UserSession
+        {
+            public static string Email { get; set; }
+            public static int Role { get; set; }
+            public static string UserName { get; set; } // New property for storing the user's name
+        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -59,66 +70,52 @@ namespace SE_Project
                 }
             }
 
-            string connectionString = "Server=127.0.0.1;Database=test;Uid=root;Pwd=12345;";
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            Service1Client client = new Service1Client();
+            int role = client.LoginUserAsync(email, password).Result;
+
+            if (role == 1 || role == 2)
             {
-                try
+                UserSession.Email = email; // Store email in session
+                UserSession.Role = role;   // Store role in session
+
+                // Fetch the user's name based on email
+                string connectionString = "Server=127.0.0.1;Database=test;Uid=root;Pwd=12345";
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT password, role FROM users WHERE email = @Email";
+                    string query = "SELECT name FROM users WHERE email = @Email";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Email", email);
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        object result = command.ExecuteScalar();
+                        if (result != null)
                         {
-                            if (reader.Read())
-                            {
-                                string hashedPassword = reader["password"].ToString();
-                                int role = Convert.ToInt32(reader["role"]);
-
-                                // Step 4: Verify password
-                                if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
-                                {
-                                    // Step 5: Determine role and navigate accordingly
-                                    if (role == 1)
-                                    {
-                                        MessageBox.Show("Welcome Admin!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        adminD adminDashboard = new adminD();
-                                        this.Hide();
-                                        adminDashboard.Show();
-                                    }
-                                    else if (role == 2)
-                                    {
-                                        MessageBox.Show("Welcome User!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        userD userDashboard = new userD();
-                                        this.Hide();
-                                        userDashboard.Show();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Unknown role assigned. Please contact support.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Incorrect password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("No user found with this email. Please sign up first.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
+                            UserSession.UserName = result.ToString(); // Store user name in session
                         }
                     }
                 }
-                catch (Exception ex)
+
+                if (role == 1)
                 {
-                    // Log exception and show user-friendly message
-                    Console.WriteLine("Error: " + ex.Message);
-                    MessageBox.Show("An unexpected error occurred. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Welcome Admin, {UserSession.UserName}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    adminD adminDashboard = new adminD();
+                    this.Hide();
+                    adminDashboard.Show();
+                }
+                else if (role == 2)
+                {
+                    MessageBox.Show($"Welcome User, {UserSession.UserName}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    userD userDashboard = new userD();
+                    this.Hide();
+                    userDashboard.Show();
                 }
             }
+            else
+            {
+                MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            client.Close();
         }
     }
 }
