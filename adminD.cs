@@ -16,5 +16,28 @@ namespace SE_Project
         {
             InitializeComponent();
         }
+
+        private void bookngsBTN_Click(object sender, EventArgs e)
+        {
+            panel1.Show();
+            panel1.Controls.Clear();
+            bookingsC bookings = new bookingsC();
+            panel1.Controls.Add(bookings);
+        }
+
+        private void usrBTN_Click(object sender, EventArgs e)
+        {
+            panel1.Show();
+            panel1.Controls.Clear();
+            usersC users = new usersC();
+            panel1.Controls.Add(users);
+        }
+
+        private void TrnsBTN_Click(object sender, EventArgs e)
+        {
+            trainsC trainsC = new trainsC();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(trainsC);
+        }
     }
 }
