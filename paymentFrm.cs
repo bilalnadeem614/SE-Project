@@ -177,6 +177,7 @@ namespace SE_Project
                 doc.Open();
                 doc.Add(new iTextSharp.text.Paragraph("Train Ticket"));
                 doc.Add(new iTextSharp.text.Paragraph($"Train Name: {TrainName}"));
+                doc.Add(new iTextSharp.text.Paragraph($"Booked By: {SE_Project.Login.UserSession.UserName.ToString()}"));
                 doc.Add(new iTextSharp.text.Paragraph($"No. of Seats: {TotalNSeats}"));
                 doc.Add(new iTextSharp.text.Paragraph($"Berth Booked: {(isBerth ? "Yes" : "No")}"));
                 doc.Add(new iTextSharp.text.Paragraph($"Start Location: {StartLocation}"));
